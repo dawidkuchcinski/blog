@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load bootstrap4 %} 
+{% load staticfiles %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}sieciORozwój - O weBDev'ie, weBDesign'ie i kaleczeniu języka{% endblock %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+  <script>
+    jQuery(document).ready(function($) {
+      $(".clickable-row").click(function() {
+          window.location = $(this).data("href");
+      });
+    });
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|PT+Sans:400,700|Staatliches&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static "css/style.css" %}" />
+</head>
+<body class="container bg-light">
+  <nav class="container fixed-top navbar navbar-expand-lg navbar-light bg-light p-4">
+    <a href="/" class="navbar-brand">
+      Sieciorozwoj.pl
+    </a>
+  </nav>
+  <nav class="w-100 fixed-top mt-5 navbar navbar-nav navbar-light bg-light">
+    <div class="container w-50">
+      <a href="{% url 'index' %}" class="nav-link text-secondary">
+        <i class="fas fa-laptop"></i> Technologia
+      </a>
+      <a href="{% url 'kacik-kulturalny' %}" class="nav-link text-secondary">
+        <i class="fas fa-book-open"></i> Kącik Kulturalny
+      </a>
+      <a href="{% url 'offtop' %}" class="nav-link text-secondary">
+        <i class="fas fa-hands"></i> Offtop
+      </a>
+      <a href="{% url 'cv' %}" class="nav-link text-secondary">
+        <i class="fas fa-id-card"></i> CV
+      </a>
+    </div>
+  </nav>
+  <main class="pl-5 pr-5 pt-5 mt-5 container">
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="container blue page-footer font-small pt-5">
+    <div class="pl-5 pr-5 text-md-left">
+      <div class="row">
+        <div class="col-md-6 mt-md-0 mt-3">
+          <h6 class="text-uppercase">Podziękowania</h6>
+          <p>Chciałbym tutaj podziękować za świetną technologię, którą wykorzystałem do tworzenia tego bloga.<br> Linki zaraz obok.</p>
+          <p>Namiary na mnie: <a class="nav-item p-0 m-0 text-secondary" href="mailto:dawid.kuchcinski@sieciorozwoj.pl">dawid.kuchcinski@sieciorozwoj.pl</a></p>
+        </div>
+        <hr class="clearfix w-100 d-md-none pb-3">
+        <div class="col-md-3 mb-md-0 mb-3">
+          <h6 class="text-uppercase">Linki</h6>
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://twitter.com/HopelessSirens" class=" text-secondary">Hopless Sirens - Za wsparcie</a>
+            </li>
+            <li>
+              <a href="https://getbootstrap.com/" class=" text-secondary">Bootstrap v4</a>
+            </li>
+            <li>
+              <a href="https://jquery.com/" class=" text-secondary">JQuery</a>
+            </li>
+            <li>
+              <a href="https://fontawesome.com/" class=" text-secondary">Font Awesome</a>
+            </li>
+           </ul>
+        </div>
+        <div class="col-md-3 mb-md-0 mb-3">
+          <h6 class="text-uppercase">&nbsp</h6>
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://www.pexels.com" class=" text-secondary">Pexels</a>
+            </li>
+            <li>
+              <a href="https://www.mysql.com/" class=" text-secondary">MySQL</a>
+            </li>
+            <li>
+              <a href="https://home.pl/" class=" text-secondary">Home.pl</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright text-center pb-3">© 2018 Copyright: Dawid Kuchciński
+    </div>
+  </footer> 
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {% if post %}
+    <div class="row">
+        {% for pst in post %}
+          {% if forloop.first %}   
+            <div class="row pt-4 pb-4 m-0 h-100">
+              <div class="col-lg-7">
+                <a href="{% url 'detail' pst.id %}">
+                  <img src="{{ MEDIA_URL }}{{ pst.thumbnail }}" class="img-fluid rounded" />
+                </a>
+              </div>
+              <div class="col-lg-5 my-auto">
+                <a href="{% url 'detail' pst.id %}">
+                  <h1 class="text-dark">{{ pst.posttitle }}</h1>
+                </a>
+                {{ pst.shorttext }} <br>
+                <span class="time text-secondary">{{ pst.dt }}</span>
+              </div>
+            </div>
+            <div class="row pb-4 m-0">
+              <div class="col-lg-12">
+                <h4 style="font-family: 'Staatliches', cursive;">Poprzednie wpisy</h4>
+              </div>
+            </div>
+          {% else %} 
+              <div class="col-lg-4 p-4 mt-5 float-left img-link">
+                <a href="{% url 'detail' pst.id %}">
+                  <img src="{{ MEDIA_URL }}{{ pst.thumbnail }}" class="img-fluid rounded" />
+                </a>
+                <div class="bottom-right text-right m-3">
+                  <a href="{% url 'detail' pst.id %}" >
+                    <h2 class="pb-0 mb-0 text-white">{{ pst.posttitle }}</h2>
+                    <span class="time text-white">{{ pst.dt }}</span>
+                  </a>
+                </div>
+              </div>
+          {% endif %}       
+        {% endfor %}
+    </div>
+  {% endif %}  
+{% endblock %}

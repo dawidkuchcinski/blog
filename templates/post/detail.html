@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {% if post %}
+    {% for pst in post %} 
+        <div class="row pt-4 pb-4 m-0">
+            <div class="col-lg-12 thumb-post">
+                <img src="{{ MEDIA_URL }}{{ pst.thumbnail }}" class="rounded" style="object-fit: cover;" />
+            </div>
+        </div>
+        <div class="row pb-4 m-0">
+            <div class="col-lg-12">
+                <span class="text-secondary">{{ pst.dt }}</span>
+                <h1 class="mb-4">{{ pst.posttitle }}</h1>
+                <p>{{ pst.postbody }}</p>
+                <font class="rounded badge badge-dark mt-4">Tagi:</font> <a href="#" class="badge badge-light">#{{ pst.posttag1 }}</a> <a href="#" class="badge badge-light">#{{ pst.posttag2 }}</a> <a href="#" class="badge badge-light">#{{ pst.posttag3 }}</a> <a href="#" class="badge badge-light">#{{ pst.posttag4 }}</a>
+            </div>
+        </div>    
+    {% endfor %}
+  {% endif %}  
+  <div class="row m-0 ">
+    <div class="col-lg-2">
+        {% if bfr %}
+            {% for bfr in bfr %}
+                <a href="/{{ bfr.id }}" class="text-secondary"><i class="fas fa-arrow-left"></i> Poprzedni post</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-lg-8">
+    </div>
+    <div class="col-lg-2 text-right">
+        {% if nxt %}
+            {% for nxt in nxt %}
+                <a href="/{{ nxt.id }}" class="text-secondary">Następny post <i class="fas fa-arrow-right"></i></a>
+            {% endfor %}
+        {% endif %}
+    </div>
+  </div>
+{% endblock %}
